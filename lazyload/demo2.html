@@ -1,0 +1,63 @@
+<!DOCTYPE html><html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>图片懒加载</title>
+	<style>
+		*{padding: 0;margin: 0;}
+		ul,li{list-style: none;}
+		img{width: 100%;opacity: 0;transition: opacity 2s;}
+		img[src]{opacity: 1;}
+	</style>
+
+</head>
+<body>
+	<ul>
+		<li><img data-src="../public/images/demo1.jpg"/></li>
+		<li><img data-src="../public/images/demo2.jpg"/></li>
+		<li><img data-src="../public/images/demo3.jpg"/></li>
+		<li><img data-src="../public/images/demo4.jpg"/></li>
+		<li><img data-src="../public/images/demo5.jpg"/></li>
+		<li><img data-src="../public/images/demo6.jpg"/></li>
+		<li><img data-src="../public/images/demo7.jpg"/></li>
+		<li><img data-src="../public/images/demo8.jpg"/></li>
+		<li><img data-src="../public/images/demo9.jpg"/></li>
+		<li><img data-src="../public/images/demo10.jpg"/></li>
+		<li><img data-src="../public/images/demo11.jpg"/></li>
+		<li><img data-src="../public/images/demo12.jpg"/></li>
+		<li><img data-src="../public/images/demo13.jpg"/></li>
+		<li><img data-src="../public/images/demo14.jpg"/></li>
+		<li><img data-src="../public/images/demo15.jpg"/></li>
+		<li><img data-src="../public/images/demo16.jpg"/></li>
+		<li><img data-src="../public/images/demo17.jpg"/></li>
+		<li><img data-src="../public/images/demo18.jpg"/></li>
+		<li>![](../public/images/demo5.jpg)</li>
+		<li>![](../public/images/demo6.jpg)</li>
+		<li>![](../public/images/demo2.jpg)</li>
+		<li>![](../public/images/demo3.jpg)</li>
+		<li>![](../public/images/demo4.jpg)</li>
+		<li>![](../public/images/demo5.jpg)</li>
+		<li>![](../public/images/demo6.jpg)</li>
+		<li>![](../public/images/demo2.jpg)</li>
+		<li>![](../public/images/demo3.jpg)</li>
+		<li>![](../public/images/demo4.jpg)</li>
+		<li>![](../public/images/demo5.jpg)</li>
+		<li>![](../public/images/demo6.jpg)</li>
+	</ul>
+
+	<script type="text/javascript">
+
+
+	//获取所有图片
+	var imgs = document.querySelectorAll("img");            //设置滚动事件
+	window.onscroll = lazyloadFn;            //屏幕的高度
+	var sh = window.innerHeight;            console.log(sh);            //刚进来需要先调用下
+	lazyloadFn();            //图片懒加载的方法
+	function lazyloadFn () {                //获取滚动的距离
+		var st = document.body.scrollTop;                //计算滚动中的底部的值
+		var sn = sh + st;                //循环所有的图片
+		for (var i = 0; i < imgs.length; i++) {                    if (imgs[i].offsetTop <= sn) {
+			imgs[i].src = imgs[i].getAttribute("data-src");
+		}
+		}
+	}        </script>
